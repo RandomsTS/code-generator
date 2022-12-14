@@ -1,16 +1,26 @@
 {
-  "name": "@randoms/code-generator",
-  "version": "1.0.1",
+  "name":        "@randoms/code-generator",
+  "version":     "1.0.1",
   "description": "randoms code-generator CLI",
-  "main": "index.js",
-  "author": "zain-ul-din",
-  "license": "MIT",
+  "main":        "./dist/index.js",
+  "types":       "./index.d.ts",
+  "ts-module":   "./index.ts",
+  "author":      "zain-ul-din",
+  "license":     "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/RandomsDev/code-generator.git"
+  },
+  "bin": {
+    "randoms": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
   },
   "private": false,
   "devDependencies": {
     "typescript": "^4.9.4"
   }
 }
+
+
