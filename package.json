@@ -12,7 +12,7 @@
     "url": "https://github.com/RandomsDev/code-generator.git"
   },
   "bin": {
-    "randoms": "./dist/index.js"
+    "randoms-generator": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc"
