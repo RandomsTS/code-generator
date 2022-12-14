@@ -1,0 +1,16 @@
+{
+  "name": "@randoms/code-generator",
+  "version": "1.0.1",
+  "description": "randoms code-generator CLI",
+  "main": "index.js",
+  "author": "zain-ul-din",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RandomsDev/code-generator.git"
+  },
+  "private": false,
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
