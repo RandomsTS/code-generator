@@ -1,3 +1,19 @@
 #! /usr/bin/env node
-console.log ("Hello World from @randoms/code-generator");
+import { readDirectory } from './util/file-util';
+
+readDirectory ("./test", (file)=>{
+    if (
+        /^[a-zA-Z][a-zA-Z0-9]*\.js$/.test(file.fileName) ||
+        /\[(.+)\].js/.test    (file.fileName) ||
+        /\[\.{3}.+\].js/.test (file.fileName)
+    )
+    {
+        // valid file
+        console.log (file.filePath);
+    }
+})
+
+
+
+
 
