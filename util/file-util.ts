@@ -1,4 +1,5 @@
-import { readdir, lstat} from "fs/promises";
+import { readFile } from "fs";
+import { readdir, lstat } from "fs/promises";
 import { basename } from "path";
 import type { FileMetaData } from "../types/util-types";
 
@@ -18,3 +19,12 @@ export async function readDirectory(root: string, callBack: (metaData:FileMetaDa
     for (var file of files)	readDirectory(root + "\\" + file, callBack);
 }
 
+export function readConfigFile (): Object
+{
+    const configFilePath: string = process.cwd () + "\\config.json";
+    readFile (configFilePath, "utf-8", (err, data)=>{
+        if (err) throw err;
+        return JSON.parse (data);
+    })
+    return {}
+}
