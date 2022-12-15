@@ -30,17 +30,9 @@ export function readConfigFile ():  any
 }
 
 // validates config file
-export function validatesConfigFile (config: any): boolean
+export function validateConfigObject (config: any): void
 {
     const requiredKeys = ["target", "include", "outputDir", "outputFile"];
     const missingKeys = requiredKeys.filter(key => !(key in config));
-
     if (missingKeys.length > 0) throw new Error(`Missing required keys: ${missingKeys.join(", ")}`);
-
-    return (
-        config.target      !== undefined &&
-        config.include     !== undefined &&
-        config.outputDir   !== undefined &&
-        config.outputFile  !== undefined
-    )
 }

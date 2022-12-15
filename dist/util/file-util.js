@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.readConfigFile = exports.readDirectory = void 0;
+exports.validateConfigObject = exports.readConfigFile = exports.readDirectory = void 0;
 const fs_1 = require("fs");
 const promises_1 = require("fs/promises");
 const path_1 = require("path");
@@ -31,8 +31,11 @@ function readConfigFile() {
     return config;
 }
 exports.readConfigFile = readConfigFile;
-/*
-    /^[a-zA-Z][a-zA-Z0-9]*\.js$/.test(file.fileName) ||
-    /\[(.+)\].js/.test    (file.fileName) ||
-    /\[\.{3}.+\].js/.test (file.fileName)
-*/ 
+// validates config file
+function validateConfigObject(config) {
+    const requiredKeys = ["target", "include", "outputDir", "outputFile"];
+    const missingKeys = requiredKeys.filter(key => !(key in config));
+    if (missingKeys.length > 0)
+        throw new Error(`Missing required keys: ${missingKeys.join(", ")}`);
+}
+exports.validateConfigObject = validateConfigObject;
