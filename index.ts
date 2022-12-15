@@ -1,12 +1,13 @@
 #! /usr/bin/env node
-import { readDirectory } from './util/file-util';
+import { readDirectory, readConfigFile } from './util/file-util';
+import type { RandomsConfig } from './types/util-types';
 
-readDirectory ("./test", (file)=>{
-    if (
-        /^[a-zA-Z][a-zA-Z0-9]*\.js$/.test(file.fileName) ||
-        /\[(.+)\].js/.test    (file.fileName) ||
-        /\[\.{3}.+\].js/.test (file.fileName)
-    )
+const config = readConfigFile () as RandomsConfig;
+const fileMatchRegex = new RegExp (config.include);
+
+
+readDirectory (config.target, (file)=>{
+    if (fileMatchRegex.test (file.fileName))
     {
         // valid file
         console.log (file.filePath);

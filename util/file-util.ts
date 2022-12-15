@@ -1,4 +1,4 @@
-import { readFile } from "fs";
+import { readFileSync } from "fs";
 import { readdir, lstat } from "fs/promises";
 import { basename } from "path";
 import type { FileMetaData } from "../types/util-types";
@@ -19,12 +19,28 @@ export async function readDirectory(root: string, callBack: (metaData:FileMetaDa
     for (var file of files)	readDirectory(root + "\\" + file, callBack);
 }
 
-export function readConfigFile (): Object
+// reads config file
+export function readConfigFile ():  any
 {
-    const configFilePath: string = process.cwd () + "\\config.json";
-    readFile (configFilePath, "utf-8", (err, data)=>{
-        if (err) throw err;
-        return JSON.parse (data);
-    })
-    return {}
+    const configFilePath: string = process.cwd () + "\\randoms.config.json";
+    let config: any = {};
+    try {   config = JSON.parse(readFileSync (configFilePath.replaceAll ("\\", "/"), "utf-8")) } 
+    catch (error) { throw new Error ("can't read randoms.config.json")  }
+    return config
+}
+
+// validates config file
+export function validatesConfigFile (config: any): boolean
+{
+    const requiredKeys = ["target", "include", "outputDir", "outputFile"];
+    const missingKeys = requiredKeys.filter(key => !(key in config));
+
+    if (missingKeys.length > 0) throw new Error(`Missing required keys: ${missingKeys.join(", ")}`);
+
+    return (
+        config.target      !== undefined &&
+        config.include     !== undefined &&
+        config.outputDir   !== undefined &&
+        config.outputFile  !== undefined
+    )
 }
