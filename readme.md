@@ -16,10 +16,10 @@ A lightweight package to recursively include all file from a directory in a sing
 
 ```json
 {
-  "target": "./test",
+  "target": "./src",
   "include": "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
   "outputDir": "./dist",
-  "outputFile": "main.js"
+  "outputFile": "output.js"
 }
 ```
 
@@ -33,7 +33,6 @@ A lightweight package to recursively include all file from a directory in a sing
 ###
 
 <!-- about -->
-
 <div align="center">
 <h4 font-weight="bold">This repository is maintained by <a href="https://github.com/Zain-ul-din">Zain-Ul-Din</a></h4>
 <p> Show some ❤️ by starring this awesome repository! </p>
