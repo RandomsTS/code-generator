@@ -1,7 +1,18 @@
 {
-  "name": "@randoms/code-generator",
+  "name": "@randoms-pkg/code-generator",
   "version": "1.0.1",
   "description": "randoms code-generator CLI",
+  "keywords": [
+    "randoms",
+    "code-generator",
+    "cli",
+    "randoms-cli",
+    "randoms-code-generator",
+    "randoms-code-generator-cli",
+    "randoms-backend",
+    "randoms-code-generator-npm",
+    "npm-randoms-code-generator"
+  ],
   "main": "./dist/index.js",
   "types": "./index.d.ts",
   "ts-module": "./index.ts",
@@ -14,7 +25,6 @@
   "bin": {
     "randoms-generator": "./dist/index.js"
   },
-  "publishConfig": {"access": "public"},
   "scripts": {
     "build": "tsc",
     "dev": "tsc && node ./dist/index.js",
