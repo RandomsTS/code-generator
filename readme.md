@@ -1,5 +1,3 @@
-### ```/!\ Warning! still under construction```
-
 ## @randoms/code-generator package
 
 A lightweight package to recursively include all file from a directory in a single source file.
