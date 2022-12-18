@@ -6,7 +6,7 @@ A lightweight package to recursively include all file from a directory in a sing
 
 - install package as a dev dependency 
 ```command
-~ npm i @randoms/code-generator -D
+~ npm i @randoms-pkg/code-generator -D
 ```
 
 - Add ```randoms.config.json``` file in the root of the project
