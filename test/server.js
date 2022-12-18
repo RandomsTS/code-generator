@@ -6,3 +6,5 @@ const _____ = require ("./products/store/index.js");
 const ______ = require ("./server.js");
 const _______ = require ("./tester/index.js");
 const ________ = require ("./[...index].js");
+
+console.log ("hello world from @code generator");
