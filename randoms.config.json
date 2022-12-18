@@ -1,6 +1,7 @@
 {
     "target": "./test",
     "include": "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
-    "outputDir": "./dist",
-    "outputFile": "main.js"
+    "outputDir": "./test",
+    "outputFile": "server.js"
 }
+

@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validateConfigObject = exports.readConfigFile = exports.readDirectory = void 0;
+exports.writeFile = exports.createDir = exports.validateConfigObject = exports.readConfigFile = exports.readDirectory = void 0;
 const fs_1 = require("fs");
 const promises_1 = require("fs/promises");
 const path_1 = require("path");
-async function isFolder(path) {
-    return (await (0, promises_1.lstat)(path)).isDirectory();
+function isFolder(path) {
+    return (0, fs_1.lstatSync)(path).isDirectory();
 }
 // reads whole directory
-async function readDirectory(root, callBack) {
-    if (!(await isFolder(root))) {
+function readDirectory(root, callBack) {
+    if (!(isFolder(root))) {
         callBack({ fileName: (0, path_1.basename)(root), filePath: root.replaceAll("\\", "/") });
         return;
     }
-    const files = await (0, promises_1.readdir)(root);
+    const files = (0, fs_1.readdirSync)(root);
     for (var file of files)
         readDirectory(root + "\\" + file, callBack);
 }
@@ -39,3 +39,20 @@ function validateConfigObject(config) {
         throw new Error(`Missing required keys: ${missingKeys.join(", ")}`);
 }
 exports.validateConfigObject = validateConfigObject;
+// creates directory if it doesn't exist
+async function createDir(path) {
+    if ((0, fs_1.existsSync)(path))
+        return;
+    try {
+        await (0, promises_1.mkdir)(path, { recursive: true });
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+exports.createDir = createDir;
+//  writes to file
+async function writeFile(path, fileContent) {
+    (0, fs_1.writeFileSync)(path, fileContent, "utf-8");
+}
+exports.writeFile = writeFile;
