@@ -5,8 +5,11 @@ A lightweight package to recursively include all file from a directory in a sing
 ## USAGE:-
 
 - install package as a dev dependency 
+
 ```command
-~ npm i @randoms-pkg/code-generator -D
+  ~ npm i @randoms-pkg/code-generator -D
+  # or
+  ~ yarn add @randoms-pkg/code-generator -D
 ```
 
 - Add ```randoms.config.json``` file in the root of the project
@@ -28,3 +31,10 @@ A lightweight package to recursively include all file from a directory in a sing
 ```
 
 ###
+
+<!-- about -->
+
+<div align="center">
+<h4 font-weight="bold">This repository is maintained by <a href="https://github.com/Zain-ul-din">Zain-Ul-Din</a></h4>
+<p> Show some ❤️ by starring this awesome repository! </p>
+</div>
