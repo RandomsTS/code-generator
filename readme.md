@@ -26,8 +26,15 @@ A lightweight package to recursively include all file from a directory in a sing
 - Add CLI in scripts
 ```JSON
  "scripts": {
-   "dev": "code-generator"
+   "dev": "randoms-generator"
  },
+```
+
+- test
+```bash 
+  ~ npm run dev
+  # or
+  ~ yarn dev
 ```
 
 ###
