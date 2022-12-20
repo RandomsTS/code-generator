@@ -18,8 +18,8 @@ A lightweight package to recursively include all file from a directory in a sing
 
 ```json
 {
-  "target":	 		"./src",
-  "include": 		"^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
+  "target":	 		  "./src",
+  "include": 		  "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
   "outputDir":  	"./dist",
   "outputFile": 	"output.js",
   "preservedFiles": {
