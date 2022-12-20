@@ -79,7 +79,10 @@ module.exports = {
 
 ```
 
-**Output file:-**
+#
+
+### **Sample Output file:-**
+
 ```js
 // output.js
 
