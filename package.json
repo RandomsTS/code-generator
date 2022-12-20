@@ -12,7 +12,17 @@
     "randoms-backend",
     "randoms-code-generator-npm",
     "npm-randoms-code-generator",
-    "@randoms-pkg/code-generator"
+    "@randoms-pkg/code-generator",
+    "code generator",
+    "file inclusion",
+    "directory traversal",
+    "source code",
+    "lightweight package",
+    "recursive inclusion",
+    "JavaScript",
+    "Node.js",
+    "module bundler",
+    "build tool"
   ],
   "main": "./dist/index.js",
   "types": "./index.d.ts",
