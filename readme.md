@@ -2,7 +2,9 @@
 
 A lightweight CLI to recursively include all file from a directory in a single source file.
 
-[Github Link](https://github.com/RandomsDev/code-generator)
+- [Install on npm](https://www.npmjs.com/package/@randoms-pkg/code-generator)
+- [Github Link](https://github.com/RandomsDev/code-generator)
+
 
 ## USAGE:-
 
