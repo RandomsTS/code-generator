@@ -8,4 +8,7 @@ export interface RandomsConfig {
     include     : string,
     outputDir   : string,
     outputFile  : string,
+    preservedFiles: {
+        [key: string]: Array<string> 
+    }
 }

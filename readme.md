@@ -2,6 +2,8 @@
 
 A lightweight package to recursively include all file from a directory in a single source file.
 
+[Github Link](https://github.com/RandomsDev/code-generator)
+
 ## USAGE:-
 
 - install package as a dev dependency 
@@ -16,10 +18,14 @@ A lightweight package to recursively include all file from a directory in a sing
 
 ```json
 {
-  "target": "./src",
-  "include": "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
-  "outputDir": "./dist",
-  "outputFile": "output.js"
+  "target":	 		"./src",
+  "include": 		"^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
+  "outputDir":  	"./dist",
+  "outputFile": 	"output.js",
+  "preservedFiles": {
+    "./_index.js":  ["getProps"],
+    "./server/_server.js": ["getServerSideProps"]
+  }
 }
 ```
 
@@ -37,7 +43,69 @@ A lightweight package to recursively include all file from a directory in a sing
   ~ yarn dev
 ```
 
+#
+
+## Docs
+
+
+> randoms.config.json
+
+|   Key       | DESCRIPTION          | 
+|-------------|-------------|       
+| target      | Target folder from where to include files **E.g** ```./src```             |       
+| include     | determines which files to include in the target folder. **E.g** ```Regex Exp.```  |     
+| outputDir   | Assign folder where to create output file. **E.g** ```./dist```                 | 
+| outputFile  | output file name. **E.g** ```./output.js```  |
+| preservedFiles   | ```Optional field!```                        |
+
+**preservedFiles:-**
+
+| Key 							  |  Expected named import |
+|---------------------------------|---------------------------------------------------|
+|  ```file relative path``` **E.g** ```./_index.js```   |  expected import name  |
+
+**Example:-**
+```js
+/// file: randoms.config.json
+"preservedFiles": {
+    "./_index.js":  ["getProps"]
+}
+
+/// file: output.js // outut file
+const _ = require ("./index.js");
+module.exports = {
+	getProps: _.getProps,
+} 
+
+```
+
+**Output file:-**
+```js
+// output.js
+
+const _ = require ("./index.js");
+const __ = require ("./products/apis/mine.js");
+const ___ = require ("./products/index.js");
+const ____ = require ("./products/products.js");
+const _____ = require ("./products/store/index.js");
+const ______ = require ("./server/_server.js");
+const _______ = require ("./server.js");
+const ________ = require ("./tester/index.js");
+const _________ = require ("./[...index].js");
+const __________ = require ("./_index.js");
+
+module.exports = { 
+    default: [_,__,___,____,_____,_______,________,_________],
+    /* preserved exports */
+    getServerSideProps: ______.getServerSideProps,
+    getProps: __________.getProps
+};
+```
+
+
 ###
+
+> [contribute to this project on Github](https://github.com/RandomsDev/code-generator)
 
 <!-- about -->
 <div align="center">

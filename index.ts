@@ -11,16 +11,37 @@ const fileMatchRegex = new RegExp (config.include);
 
 createDir (config.outputDir);
 
+let defaultExports: Array<string> = [];
+let preservedFilesExpots: Array<string> = [];
 
-readDirectory (config.target, (file)=>  {
-    if (fileMatchRegex.test (file.fileName)) 
+readDirectory (config.target, (file)  =>  {
+
+    idx += 1;
+    let varName: string = "";
+    for (let i = 0; i < idx; i++) varName += "_"; 
+    
+    const fileRelaitvePath = file.filePath.replace (config.target, ".");
+    if (config.preservedFiles && Object.keys (config.preservedFiles).includes(fileRelaitvePath)) 
     {
-        idx += 1;
-        let varName: string = "";
-        for (let i = 0; i < idx; i++) varName += "_"; 
-        fileContent += `const ${varName} = require ("${file.filePath.replace (config.target, ".")}");\n`;
+        fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
+        config.preservedFiles[fileRelaitvePath].forEach ((prevedExport: string) => {
+            preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
+        });
     }
-})
+    else if (fileMatchRegex.test (file.fileName)) 
+    {
+        fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
+        defaultExports.push (varName);
+    }
+});
 
-writeFile (config.outputDir + "/" + config.outputFile, fileContent);
+
+
+writeFile (config.outputDir + "/" + config.outputFile, 
+`${fileContent}
+module.exports = { 
+    default: [${defaultExports.join (",")}],\n    /* preserved exports */
+${preservedFilesExpots.join (",\n")}
+};
+`);
 

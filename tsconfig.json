@@ -1,7 +1,14 @@
 {
-    "compilerOptions": {
-      "target": "ES2022","experimentalDecorators": true,"module": "CommonJS",                                 /* Specify what module code is generated. */
-      "moduleResolution":"node","outDir": "dist","esModuleInterop": true,"forceConsistentCasingInFileNames": true,"strict": true,"skipLibCheck": true                                  /* Skip type checking all .d.ts files. */,
+    "compilerOptions":	{
+      "target": 						  "ES2022",
+      "experimentalDecorators": 		  true,
+      "module": 						  "CommonJS",
+      "moduleResolution":				  "node",
+      "outDir": 						  "dist",
+      "esModuleInterop": 				  true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": 						  true,
+      "skipLibCheck": 					  true
     }
 }
   
