@@ -58,11 +58,11 @@ A lightweight package to recursively include all file from a directory in a sing
 | outputFile  | output file name. **E.g** ```./output.js```  |
 | preservedFiles   | ```Optional field!```                        |
 
-**PreservedFiles:-**
+**Preserved Files:-**
 
 | Key 							  |  Expected named import |
 |---------------------------------|---------------------------------------------------|
-|  ```file relative path``` **E.g** ```./_index.js```   |  expected import name  |
+|  ```file relative path``` **E.g** ```./_index.js```   | arrays of expected import name **E.g** ```["getProps"]``` |
 
 **Example:-**
 ```js
