@@ -1,6 +1,6 @@
 ## @randoms/code-generator package
 
-A lightweight package to recursively include all file from a directory in a single source file.
+A lightweight CLI to recursively include all file from a directory in a single source file.
 
 [Github Link](https://github.com/RandomsDev/code-generator)
 
