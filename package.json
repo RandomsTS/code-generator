@@ -11,7 +11,8 @@
     "randoms-code-generator-cli",
     "randoms-backend",
     "randoms-code-generator-npm",
-    "npm-randoms-code-generator"
+    "npm-randoms-code-generator",
+    "@randoms-pkg/code-generator"
   ],
   "main": "./dist/index.js",
   "types": "./index.d.ts",
