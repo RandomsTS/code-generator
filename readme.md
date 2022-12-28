@@ -23,11 +23,7 @@ A lightweight CLI to recursively include all file from a directory in a single s
   "target":  "./src",
   "include":  "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
   "outputDir": "./dist",
-  "outputFile": "output.js",
-  "preservedFiles": {
-    "./_index.js":  ["getProps"],
-    "./server/_server.js": ["getServerSideProps"]
-  }
+  "outputFile": "output.js"
 }
 ```
 
@@ -47,8 +43,24 @@ A lightweight CLI to recursively include all file from a directory in a single s
 
 #
 
+---
+
 ## Docs
 
+### Advance Usage
+
+```json
+{
+  "target":  "./src",
+  "include":  "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
+  "outputDir": "./dist",
+  "outputFile": "output.js",
+  "preservedFiles": {
+    "./_index.js":  ["getProps"],
+    "./server/_server.js": ["getServerSideProps"]
+  }
+}
+```
 
 > randoms.config.json
 
