@@ -13,6 +13,7 @@ createDir (config.outputDir);
 
 let defaultExports: Array<string> = [];
 let preservedFilesExpots: Array<string> = [];
+let foundPreservedFiles: Array <string> = [] 
 
 readDirectory (config.target, (file)  =>  {
 
@@ -27,6 +28,7 @@ readDirectory (config.target, (file)  =>  {
         config.preservedFiles[fileRelaitvePath].forEach ((prevedExport: string) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
+        foundPreservedFiles.push (fileRelaitvePath);
     }
     else if (fileMatchRegex.test (file.fileName)) 
     {
@@ -35,7 +37,15 @@ readDirectory (config.target, (file)  =>  {
     }
 });
 
+console.log (foundPreservedFiles)
 
+Object.keys (config.preservedFiles).forEach ((key: string) => {
+    if (!foundPreservedFiles.includes (key)) {
+        config.preservedFiles[key].forEach ((prevedExport: string) => {
+            preservedFilesExpots.push(`    ${prevedExport}: undefined `);
+        });
+    }
+})
 
 writeFile (config.outputDir + "/" + config.outputFile, 
 `${fileContent}

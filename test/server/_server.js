@@ -1,1 +1,3 @@
-export const getServerSideProps = async (context) => {}
+module.exports = {
+    app: ''
+}

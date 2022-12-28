@@ -7,11 +7,10 @@ const ______ = require ("./server/_server.js");
 const _______ = require ("./server.js");
 const ________ = require ("./tester/index.js");
 const _________ = require ("./[...index].js");
-const __________ = require ("./_index.js");
 
 module.exports = { 
     default: [_,__,___,____,_____,_______,________,_________],
     /* preserved exports */
     getServerSideProps: ______.getServerSideProps,
-    getProps: __________.getProps
+    getProps: undefined 
 };

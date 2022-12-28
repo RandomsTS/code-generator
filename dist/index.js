@@ -10,6 +10,7 @@ const fileMatchRegex = new RegExp(config.include);
 (0, file_util_1.createDir)(config.outputDir);
 let defaultExports = [];
 let preservedFilesExpots = [];
+let foundPreservedFiles = [];
 (0, file_util_1.readDirectory)(config.target, (file) => {
     idx += 1;
     let varName = "";
@@ -21,10 +22,19 @@ let preservedFilesExpots = [];
         config.preservedFiles[fileRelaitvePath].forEach((prevedExport) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
+        foundPreservedFiles.push(fileRelaitvePath);
     }
     else if (fileMatchRegex.test(file.fileName)) {
         fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
         defaultExports.push(varName);
+    }
+});
+console.log(foundPreservedFiles);
+Object.keys(config.preservedFiles).forEach((key) => {
+    if (!foundPreservedFiles.includes(key)) {
+        config.preservedFiles[key].forEach((prevedExport) => {
+            preservedFilesExpots.push(`    ${prevedExport}: undefined `);
+        });
     }
 });
 (0, file_util_1.writeFile)(config.outputDir + "/" + config.outputFile, `${fileContent}

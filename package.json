@@ -39,7 +39,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc && node ./dist/index.js",
-    "test": "node ./test/server.js"
+    "test": "randoms-generator"
   },
   "private": false,
   "devDependencies": {
