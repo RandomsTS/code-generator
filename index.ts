@@ -56,6 +56,7 @@ if (config.preservedFiles) {
                 did you means?
                     ${key}: [${config.preservedFiles[key]}]
             `);
+            console.log ("val: ", config.preservedFiles[key].forEach);
             config.preservedFiles[key].forEach ((prevedExport: string) => {
                 preservedFilesExpots.push(`    ${prevedExport}: undefined `);
             });
