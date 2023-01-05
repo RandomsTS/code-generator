@@ -51,7 +51,7 @@ readDirectory (config.target, (file)  =>  {
 if (config.preservedFiles) {
     Object.keys (config.preservedFiles).forEach ((key: string) => {
         if (!foundPreservedFiles.includes (key)) {
-            if (typeof config.preservedFiles[key].forEach == undefined) throw new Error (`
+            if (config.preservedFiles[key].forEach == undefined) throw new Error (`
                 preserved files object values must be an Array
                 did you means?
                     ${key}: [${config.preservedFiles[key]}]
