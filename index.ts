@@ -54,9 +54,8 @@ if (config.preservedFiles) {
             if (config.preservedFiles[key].forEach == undefined) throw new Error (`
                 preserved files object values must be an Array
                 did you means?
-                    ${key}: [${config.preservedFiles[key]}]
+                    "${key}": ["${config.preservedFiles[key]}"]
             `);
-            console.log ("val: ", config.preservedFiles[key].forEach);
             config.preservedFiles[key].forEach ((prevedExport: string) => {
                 preservedFilesExpots.push(`    ${prevedExport}: undefined `);
             });
