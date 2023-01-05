@@ -48,13 +48,16 @@ readDirectory (config.target, (file)  =>  {
     }
 });
 
-Object.keys (config.preservedFiles).forEach ((key: string) => {
-    if (!foundPreservedFiles.includes (key)) {
-        config.preservedFiles[key].forEach ((prevedExport: string) => {
-            preservedFilesExpots.push(`    ${prevedExport}: undefined `);
-        });
-    }
-});
+if (config.preservedFiles) {
+    Object.keys (config.preservedFiles).forEach ((key: string) => {
+        if (!foundPreservedFiles.includes (key)) {
+            config.preservedFiles[key].forEach ((prevedExport: string) => {
+                preservedFilesExpots.push(`    ${prevedExport}: undefined `);
+            });
+        }
+    });
+}
+
 
 writeFile (config.outputDir + "/" + config.outputFile, 
 `${fileContent}
