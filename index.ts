@@ -51,6 +51,11 @@ readDirectory (config.target, (file)  =>  {
 if (config.preservedFiles) {
     Object.keys (config.preservedFiles).forEach ((key: string) => {
         if (!foundPreservedFiles.includes (key)) {
+            if (typeof config.preservedFiles[key].forEach == undefined) throw new Error (`
+                preserved files object values must be an Array
+                did you means?
+                    ${key}: [${config.preservedFiles[key]}]
+            `);
             config.preservedFiles[key].forEach ((prevedExport: string) => {
                 preservedFilesExpots.push(`    ${prevedExport}: undefined `);
             });
