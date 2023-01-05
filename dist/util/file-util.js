@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.createDir = exports.validateConfigObject = exports.readConfigFile = exports.readDirectory = void 0;
+exports.getRelativePath = exports.writeFile = exports.createDir = exports.validateConfigObject = exports.readConfigFile = exports.readDirectory = void 0;
 const fs_1 = require("fs");
 const promises_1 = require("fs/promises");
 const path_1 = require("path");
@@ -56,3 +56,17 @@ async function writeFile(path, fileContent) {
     (0, fs_1.writeFileSync)(path, fileContent, "utf-8");
 }
 exports.writeFile = writeFile;
+function getRelativePath(from, to) {
+    const fromPath = (0, path_1.resolve)(from);
+    const toPath = (0, path_1.resolve)(to);
+    const relativePath = (0, path_1.relative)(fromPath, toPath).replaceAll("\\", "/");
+    if (relativePath == "")
+        return ".";
+    if (!relativePath.startsWith(".."))
+        return "./" + relativePath;
+    if (to.includes((0, path_1.basename)(relativePath)))
+        return "./" + relativePath;
+    const baseName = (0, path_1.basename)(to);
+    return "./" + relativePath + "/" + (baseName == "." ? "" : baseName + "/");
+}
+exports.getRelativePath = getRelativePath;

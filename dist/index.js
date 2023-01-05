@@ -11,12 +11,14 @@ const fileMatchRegex = new RegExp(config.include);
 let defaultExports = [];
 let preservedFilesExpots = [];
 let foundPreservedFiles = [];
+const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.target);
+console.log(relativePath);
 (0, file_util_1.readDirectory)(config.target, (file) => {
     idx += 1;
     let varName = "";
     for (let i = 0; i < idx; i++)
         varName += "_";
-    const fileRelaitvePath = file.filePath.replace(config.target, ".");
+    const fileRelaitvePath = file.filePath.replace(config.target, ".").replace(".", "");
     if (config.preservedFiles && Object.keys(config.preservedFiles).includes(fileRelaitvePath)) {
         fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
         config.preservedFiles[fileRelaitvePath].forEach((prevedExport) => {
@@ -25,11 +27,10 @@ let foundPreservedFiles = [];
         foundPreservedFiles.push(fileRelaitvePath);
     }
     else if (fileMatchRegex.test(file.fileName)) {
-        fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
+        fileContent += `const ${varName} = require ("${relativePath}${fileRelaitvePath}");\n`;
         defaultExports.push(varName);
     }
 });
-console.log(foundPreservedFiles);
 Object.keys(config.preservedFiles).forEach((key) => {
     if (!foundPreservedFiles.includes(key)) {
         config.preservedFiles[key].forEach((prevedExport) => {

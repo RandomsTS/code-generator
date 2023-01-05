@@ -1,5 +1,12 @@
 #! /usr/bin/env node
-import { readDirectory, readConfigFile, validateConfigObject, createDir, writeFile } from './util/file-util';
+import { 
+    readDirectory,
+    readConfigFile,
+    validateConfigObject,
+    createDir,
+    writeFile,
+    getRelativePath
+} from './util/file-util';
 import type { RandomsConfig } from './types/util-types';
 
 var fileContent: string = "";
@@ -15,13 +22,17 @@ let defaultExports: Array<string> = [];
 let preservedFilesExpots: Array<string> = [];
 let foundPreservedFiles: Array <string> = [] 
 
+const relativePath = getRelativePath (config.outputDir, config.target);
+console.log (relativePath);
+
 readDirectory (config.target, (file)  =>  {
 
     idx += 1;
     let varName: string = "";
     for (let i = 0; i < idx; i++) varName += "_"; 
     
-    const fileRelaitvePath = file.filePath.replace (config.target, ".");
+    const fileRelaitvePath = file.filePath.replace (config.target, ".").replace (".", "");
+
     if (config.preservedFiles && Object.keys (config.preservedFiles).includes(fileRelaitvePath)) 
     {
         fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
@@ -32,12 +43,10 @@ readDirectory (config.target, (file)  =>  {
     }
     else if (fileMatchRegex.test (file.fileName)) 
     {
-        fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
+        fileContent += `const ${varName} = require ("${relativePath}${fileRelaitvePath}");\n`;
         defaultExports.push (varName);
     }
 });
-
-console.log (foundPreservedFiles)
 
 Object.keys (config.preservedFiles).forEach ((key: string) => {
     if (!foundPreservedFiles.includes (key)) {
@@ -45,7 +54,7 @@ Object.keys (config.preservedFiles).forEach ((key: string) => {
             preservedFilesExpots.push(`    ${prevedExport}: undefined `);
         });
     }
-})
+});
 
 writeFile (config.outputDir + "/" + config.outputFile, 
 `${fileContent}
@@ -54,4 +63,5 @@ module.exports = {
 ${preservedFilesExpots.join (",\n")}
 };
 `);
+
 

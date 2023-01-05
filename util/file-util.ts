@@ -1,6 +1,6 @@
 import { lstatSync, readdirSync, readFileSync, existsSync, writeFileSync } from "fs";
 import {  mkdir } from "fs/promises";
-import { basename } from "path";
+import { basename, resolve, relative } from "path";
 import type { FileMetaData } from "../types/util-types";
 
 function isFolder(path: string): Boolean  {
@@ -50,3 +50,16 @@ export async function writeFile (path:string, fileContent: string): Promise<void
 {
     writeFileSync (path, fileContent, "utf-8")
 }
+
+// returns relative path btw path a to b
+export function getRelativePath (from: string, to:string): string {
+    const fromPath = resolve (from);
+    const toPath   = resolve (to);
+    const relativePath = relative (fromPath, toPath).replaceAll ("\\", "/");
+    if (relativePath == "") return ".";
+    if (!relativePath.startsWith ("..")) return "./" + relativePath;
+    if (to.includes(basename (relativePath))) return "./" + relativePath;
+    const baseName = basename (to);
+    return "./" + relativePath + "/" + (baseName == "." ? "" : baseName + "/");
+}
+

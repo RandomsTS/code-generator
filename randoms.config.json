@@ -1,11 +1,12 @@
 {
-    "target": "./test",
-    "include": "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
-    "outputDir": "./test",
-    "outputFile": "server.js",
+    "target":           "./test",
+    "include":          "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
+    "outputDir":        "./test",
+    "outputFile":       "server.js",
     "preservedFiles": {
         "./_index.js": ["getProps"],
         "./server/_server.js": ["getServerSideProps"]
     }
 }
+
 
