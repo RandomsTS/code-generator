@@ -56,6 +56,7 @@ async function writeFile(path, fileContent) {
     (0, fs_1.writeFileSync)(path, fileContent, "utf-8");
 }
 exports.writeFile = writeFile;
+// returns relative path btw path a to b
 function getRelativePath(from, to) {
     const fromPath = (0, path_1.resolve)(from);
     const toPath = (0, path_1.resolve)(to);

@@ -31,13 +31,15 @@ console.log(relativePath);
         defaultExports.push(varName);
     }
 });
-Object.keys(config.preservedFiles).forEach((key) => {
-    if (!foundPreservedFiles.includes(key)) {
-        config.preservedFiles[key].forEach((prevedExport) => {
-            preservedFilesExpots.push(`    ${prevedExport}: undefined `);
-        });
-    }
-});
+if (config.preservedFiles) {
+    Object.keys(config.preservedFiles).forEach((key) => {
+        if (!foundPreservedFiles.includes(key)) {
+            config.preservedFiles[key].forEach((prevedExport) => {
+                preservedFilesExpots.push(`    ${prevedExport}: undefined `);
+            });
+        }
+    });
+}
 (0, file_util_1.writeFile)(config.outputDir + "/" + config.outputFile, `${fileContent}
 module.exports = { 
     default: [${defaultExports.join(",")}],\n    /* preserved exports */
