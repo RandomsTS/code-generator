@@ -34,6 +34,12 @@ console.log(relativePath);
 if (config.preservedFiles) {
     Object.keys(config.preservedFiles).forEach((key) => {
         if (!foundPreservedFiles.includes(key)) {
+            if (typeof config.preservedFiles[key].forEach == undefined)
+                throw new Error(`
+                preserved files object values must be an Array
+                did you means?
+                    ${key}: [${config.preservedFiles[key]}]
+            `);
             config.preservedFiles[key].forEach((prevedExport) => {
                 preservedFilesExpots.push(`    ${prevedExport}: undefined `);
             });
