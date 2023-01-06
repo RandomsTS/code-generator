@@ -35,12 +35,13 @@ export default class CodeGenerator
     public writeToFile () : void
     {
         FileUtil.writeFile (this.config.outputDir + "/" + this.config.outputFile, 
-        `${this.fileContent}
-        module.exports = { 
-            default: [${this.defaultExports.join (",")}],\n    /* preserved exports */
-        ${this.preservedFilesExpots.join (",\n")}
-        };
-        `);
+`${this.fileContent}
+module.exports = { 
+    default: [${this.defaultExports.join (",")}],\n    /* preserved exports */
+${this.preservedFilesExpots.join (",\n")}
+};
+`
+        );
     }
 
     public defaultExports:       Array<string>  = [];
