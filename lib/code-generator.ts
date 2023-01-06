@@ -35,12 +35,7 @@ export default class CodeGenerator
     public writeToFile () : void
     {
         FileUtil.writeFile (this.config.outputDir + "/" + this.config.outputFile, 
-`${this.fileContent}
-module.exports = { 
-    default: [${this.defaultExports.join (",")}],\n    /* preserved exports */
-    ${this.preservedFilesExpots.join (",\n")}
-};
-`
+            `${this.fileContent}\nmodule.exports = {\n  default: [${this.defaultExports.join (",")}],\n    /* preserved exports */\n    ${this.preservedFilesExpots.join (",\n")}\n};`
         );
     }
 
@@ -53,7 +48,7 @@ module.exports = {
     private relativePath:string
     private fileContent:string = ''
     
-
+    
     /**
      * reads directory and finds file exports
     */
@@ -92,7 +87,7 @@ module.exports = {
             }
         });
     }
-
+    
     /**
      * adds undefined at the place of missing preserved files
     */

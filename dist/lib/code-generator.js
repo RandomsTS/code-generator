@@ -28,12 +28,7 @@ class CodeGenerator {
      * writes content to file
     */
     writeToFile() {
-        file_util_1.default.writeFile(this.config.outputDir + "/" + this.config.outputFile, `${this.fileContent}
-module.exports = { 
-    default: [${this.defaultExports.join(",")}],\n    /* preserved exports */
-    ${this.preservedFilesExpots.join(",\n")}
-};
-`);
+        file_util_1.default.writeFile(this.config.outputDir + "/" + this.config.outputFile, `${this.fileContent}\nmodule.exports = {\n  default: [${this.defaultExports.join(",")}],\n    /* preserved exports */\n    ${this.preservedFilesExpots.join(",\n")}\n};`);
     }
     defaultExports = [];
     preservedFilesExpots = [];
