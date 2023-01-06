@@ -38,7 +38,7 @@ export default class CodeGenerator
 `${this.fileContent}
 module.exports = { 
     default: [${this.defaultExports.join (",")}],\n    /* preserved exports */
-${this.preservedFilesExpots.join (",\n")}
+    ${this.preservedFilesExpots.join (",\n")}
 };
 `
         );

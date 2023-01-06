@@ -29,11 +29,11 @@ class CodeGenerator {
     */
     writeToFile() {
         file_util_1.default.writeFile(this.config.outputDir + "/" + this.config.outputFile, `${this.fileContent}
-        module.exports = { 
-            default: [${this.defaultExports.join(",")}],\n    /* preserved exports */
-        ${this.preservedFilesExpots.join(",\n")}
-        };
-        `);
+module.exports = { 
+    default: [${this.defaultExports.join(",")}],\n    /* preserved exports */
+    ${this.preservedFilesExpots.join(",\n")}
+};
+`);
     }
     defaultExports = [];
     preservedFilesExpots = [];
