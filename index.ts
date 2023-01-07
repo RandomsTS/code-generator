@@ -33,7 +33,11 @@ readDirectory (config.target, (file)  =>  {
     
     const fileRelaitvePath = file.filePath.replace (config.target, ".").replace (".", "");
 
-    if (config.preservedFiles && Object.keys (config.preservedFiles).includes(fileRelaitvePath)) 
+    if (
+        config.preservedFiles 
+        &&
+        Object.keys (config.preservedFiles).includes(relativePath+fileRelaitvePath)
+    ) 
     {
         fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
         config.preservedFiles[fileRelaitvePath].forEach ((prevedExport: string) => {
