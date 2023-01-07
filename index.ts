@@ -37,7 +37,11 @@ readDirectory (config.target, (file)  =>  {
     if (
         config.preservedFiles 
         &&
-        Object.keys (config.preservedFiles).includes(fileRelaitvePath)
+        (Object.keys (config.preservedFiles)
+        .filter ((path) =>{
+            if (path.startsWith (".")) return path.replace (".", "") === fileRelaitvePath;
+            return fileRelaitvePath === path; 
+        }).length > 0)
     ) 
     {
         fileContent += `const ${varName} = require ("${relativePath+fileRelaitvePath}");\n`;   
