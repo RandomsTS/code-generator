@@ -25,7 +25,6 @@ let foundPreservedFiles: Array <string> = []
 
 const relativePath = getRelativePath (config.outputDir, config.target);
 
-
 readDirectory (config.target, (file)  =>  {
 
     idx += 1;
