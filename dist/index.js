@@ -18,13 +18,15 @@ const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.t
     let varName = "";
     for (let i = 0; i < idx; i++)
         varName += "_";
-    const fileRelaitvePath = file.filePath.replace(config.target, ".").replace(".", "");
+    let fileRelaitvePath = file.filePath.replace(config.target, ".").replace(".", "");
     if (config.preservedFiles
         &&
             (Object.keys(config.preservedFiles)
                 .filter((path) => {
-                if (path.startsWith("."))
+                if (path.startsWith(".")) {
+                    fileRelaitvePath = `.${fileRelaitvePath}`;
                     return path.replace(".", "") === fileRelaitvePath;
+                }
                 return fileRelaitvePath === path;
             }).length > 0)) {
         fileContent += `const ${varName} = require ("${relativePath + fileRelaitvePath}");\n`;
