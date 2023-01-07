@@ -23,10 +23,8 @@ const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.t
         &&
             (Object.keys(config.preservedFiles)
                 .filter((path) => {
-                if (path.startsWith(".")) {
+                if (path.startsWith("."))
                     fileRelaitvePath = `.${fileRelaitvePath}`;
-                    return path.replace(".", "") === fileRelaitvePath;
-                }
                 return fileRelaitvePath === path;
             }).length > 0)) {
         fileContent += `const ${varName} = require ("${relativePath + fileRelaitvePath}");\n`;

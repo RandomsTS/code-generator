@@ -39,10 +39,7 @@ readDirectory (config.target, (file)  =>  {
         &&
         (Object.keys (config.preservedFiles)
         .filter ((path) =>{
-            if (path.startsWith (".")) {
-                fileRelaitvePath = `.${fileRelaitvePath}`;
-                return path.replace (".", "") === fileRelaitvePath;
-            }
+            if (path.startsWith (".")) fileRelaitvePath = `.${fileRelaitvePath}`;
             return fileRelaitvePath === path; 
         }).length > 0)
     ) 
