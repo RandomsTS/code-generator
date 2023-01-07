@@ -2,6 +2,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const file_util_1 = require("./util/file-util");
+const CONSTANTS_1 = require("./util/CONSTANTS");
 var fileContent = "";
 let idx = 0;
 const config = (0, file_util_1.readConfigFile)();
@@ -20,12 +21,12 @@ const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.t
     const fileRelaitvePath = file.filePath.replace(config.target, ".").replace(".", "");
     if (config.preservedFiles
         &&
-            Object.keys(config.preservedFiles).includes(relativePath + fileRelaitvePath)) {
+            Object.keys(config.preservedFiles).includes(fileRelaitvePath)) {
         fileContent += `const ${varName} = require ("${relativePath + fileRelaitvePath}");\n`;
-        config.preservedFiles[relativePath + fileMatchRegex].forEach((prevedExport) => {
+        config.preservedFiles[fileRelaitvePath].forEach((prevedExport) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
-        foundPreservedFiles.push(relativePath + fileRelaitvePath);
+        foundPreservedFiles.push(fileRelaitvePath);
     }
     else if (fileMatchRegex.test(file.fileName)) {
         fileContent += `const ${varName} = require ("${relativePath}${fileRelaitvePath}");\n`;
@@ -40,6 +41,7 @@ if (config.preservedFiles) {
                 preserved files object values must be an Array
                 did you means?
                     "${key}": ["${config.preservedFiles[key]}"]
+                ${CONSTANTS_1.helperText}    
             `);
             config.preservedFiles[key].forEach((prevedExport) => {
                 preservedFilesExpots.push(`    ${prevedExport}: undefined `);

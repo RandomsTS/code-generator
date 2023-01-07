@@ -2,6 +2,7 @@ import { lstatSync, readdirSync, readFileSync, existsSync, writeFileSync } from 
 import {  mkdir } from "fs/promises";
 import { basename, resolve, relative } from "path";
 import type { FileMetaData } from "../types/util-types";
+import { helperText } from "./CONSTANTS";
 
 function isFolder(path: string): Boolean  {
     return lstatSync(path).isDirectory();
@@ -25,7 +26,12 @@ export function readConfigFile ():  any
     const configFilePath: string = process.cwd () + "\\randoms.config.json";
     let config: any = {};
     try {   config = JSON.parse(readFileSync (configFilePath.replaceAll ("\\", "/"), "utf-8")) } 
-    catch (error) { throw new Error ("can't read randoms.config.json")  }
+    catch (error) { 
+        throw new Error (`
+            can't read randoms.config.json
+            ${helperText}
+        `)  
+    }
     return config
 }
 
@@ -34,7 +40,7 @@ export function validateConfigObject (config: any): void
 {
     const requiredKeys = ["target", "include", "outputDir", "outputFile"];
     const missingKeys = requiredKeys.filter(key => !(key in config));
-    if (missingKeys.length > 0) throw new Error(`Missing required keys: ${missingKeys.join(", ")}`);
+    if (missingKeys.length > 0) throw new Error(`Missing required keys: ${missingKeys.join(", ")} \n ${helperText}`);
 }
 
 // creates directory if it doesn't exist

@@ -4,6 +4,7 @@ exports.getRelativePath = exports.writeFile = exports.createDir = exports.valida
 const fs_1 = require("fs");
 const promises_1 = require("fs/promises");
 const path_1 = require("path");
+const CONSTANTS_1 = require("./CONSTANTS");
 function isFolder(path) {
     return (0, fs_1.lstatSync)(path).isDirectory();
 }
@@ -26,7 +27,10 @@ function readConfigFile() {
         config = JSON.parse((0, fs_1.readFileSync)(configFilePath.replaceAll("\\", "/"), "utf-8"));
     }
     catch (error) {
-        throw new Error("can't read randoms.config.json");
+        throw new Error(`
+            can't read randoms.config.json
+            ${CONSTANTS_1.helperText}
+        `);
     }
     return config;
 }
@@ -36,7 +40,7 @@ function validateConfigObject(config) {
     const requiredKeys = ["target", "include", "outputDir", "outputFile"];
     const missingKeys = requiredKeys.filter(key => !(key in config));
     if (missingKeys.length > 0)
-        throw new Error(`Missing required keys: ${missingKeys.join(", ")}`);
+        throw new Error(`Missing required keys: ${missingKeys.join(", ")} \n ${CONSTANTS_1.helperText}`);
 }
 exports.validateConfigObject = validateConfigObject;
 // creates directory if it doesn't exist

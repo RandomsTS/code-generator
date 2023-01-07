@@ -7,6 +7,7 @@ import {
     writeFile,
     getRelativePath
 } from './util/file-util';
+import { helperText } from './util/CONSTANTS';
 import type { RandomsConfig } from './types/util-types';
 
 var fileContent: string = "";
@@ -36,15 +37,14 @@ readDirectory (config.target, (file)  =>  {
     if (
         config.preservedFiles 
         &&
-        Object.keys (config.preservedFiles).includes(relativePath+fileRelaitvePath)
+        Object.keys (config.preservedFiles).includes(fileRelaitvePath)
     ) 
     {
-        fileContent += `const ${varName} = require ("${relativePath+fileRelaitvePath}");\n`;
-        
-        config.preservedFiles[relativePath+fileMatchRegex].forEach ((prevedExport: string) => {
+        fileContent += `const ${varName} = require ("${relativePath+fileRelaitvePath}");\n`;   
+        config.preservedFiles[fileRelaitvePath].forEach ((prevedExport: string) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
-        foundPreservedFiles.push (relativePath+fileRelaitvePath);
+        foundPreservedFiles.push (fileRelaitvePath);
     }
     else if (fileMatchRegex.test (file.fileName)) 
     {
@@ -60,6 +60,7 @@ if (config.preservedFiles) {
                 preserved files object values must be an Array
                 did you means?
                     "${key}": ["${config.preservedFiles[key]}"]
+                ${helperText}    
             `);
             config.preservedFiles[key].forEach ((prevedExport: string) => {
                 preservedFilesExpots.push(`    ${prevedExport}: undefined `);
