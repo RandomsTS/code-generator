@@ -16,7 +16,7 @@ function readDirectory(root, callBack) {
     }
     const files = (0, fs_1.readdirSync)(root);
     for (var file of files)
-        readDirectory(root + "\\" + file, callBack);
+        readDirectory(root + "/" + file, callBack);
 }
 exports.readDirectory = readDirectory;
 // reads config file

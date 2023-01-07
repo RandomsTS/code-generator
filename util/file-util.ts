@@ -17,7 +17,7 @@ export function readDirectory(root: string, callBack: (metaData:FileMetaData)=> 
 	}
     
     const files: string[] = readdirSync(root);
-    for (var file of files)	readDirectory(root + "\\" + file, callBack);
+    for (var file of files)	readDirectory(root + "/" + file, callBack);
 }
 
 // reads config file
