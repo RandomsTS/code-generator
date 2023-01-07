@@ -22,8 +22,6 @@ const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.t
         &&
             Object.keys(config.preservedFiles).includes(relativePath + fileRelaitvePath)) {
         fileContent += `const ${varName} = require ("${relativePath + fileRelaitvePath}");\n`;
-        if (config.preservedFiles[relativePath + fileMatchRegex] == undefined)
-            throw new Error(`Incorrect path to ${fileRelaitvePath} did you means? \n ${relativePath + fileRelaitvePath}`);
         config.preservedFiles[relativePath + fileMatchRegex].forEach((prevedExport) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });

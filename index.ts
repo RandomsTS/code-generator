@@ -40,9 +40,7 @@ readDirectory (config.target, (file)  =>  {
     ) 
     {
         fileContent += `const ${varName} = require ("${relativePath+fileRelaitvePath}");\n`;
-        if (config.preservedFiles [relativePath+fileMatchRegex] == undefined)
-            throw new Error (`Incorrect path to ${fileRelaitvePath} did you means? \n ${relativePath+fileRelaitvePath}`);
-
+        
         config.preservedFiles[relativePath+fileMatchRegex].forEach ((prevedExport: string) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
