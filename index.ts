@@ -23,7 +23,7 @@ let preservedFilesExpots: Array<string> = [];
 let foundPreservedFiles: Array <string> = [] 
 
 const relativePath = getRelativePath (config.outputDir, config.target);
-console.log (relativePath);
+
 
 readDirectory (config.target, (file)  =>  {
 
@@ -33,19 +33,20 @@ readDirectory (config.target, (file)  =>  {
     
     const fileRelaitvePath = file.filePath.replace (config.target, ".").replace (".", "");
 
-    console.log (relativePath+fileRelaitvePath);
-    
     if (
         config.preservedFiles 
         &&
         Object.keys (config.preservedFiles).includes(relativePath+fileRelaitvePath)
     ) 
     {
-        fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
-        config.preservedFiles[fileRelaitvePath].forEach ((prevedExport: string) => {
+        fileContent += `const ${varName} = require ("${relativePath+fileRelaitvePath}");\n`;
+        if (config.preservedFiles [relativePath+fileMatchRegex] == undefined)
+            throw new Error (`Incorrect path to ${fileRelaitvePath} did you means? \n ${relativePath+fileRelaitvePath}`);
+
+        config.preservedFiles[relativePath+fileMatchRegex].forEach ((prevedExport: string) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
-        foundPreservedFiles.push (fileRelaitvePath);
+        foundPreservedFiles.push (relativePath+fileRelaitvePath);
     }
     else if (fileMatchRegex.test (file.fileName)) 
     {

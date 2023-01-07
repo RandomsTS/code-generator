@@ -12,22 +12,22 @@ let defaultExports = [];
 let preservedFilesExpots = [];
 let foundPreservedFiles = [];
 const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.target);
-console.log(relativePath);
 (0, file_util_1.readDirectory)(config.target, (file) => {
     idx += 1;
     let varName = "";
     for (let i = 0; i < idx; i++)
         varName += "_";
     const fileRelaitvePath = file.filePath.replace(config.target, ".").replace(".", "");
-    console.log(relativePath + fileRelaitvePath);
     if (config.preservedFiles
         &&
             Object.keys(config.preservedFiles).includes(relativePath + fileRelaitvePath)) {
-        fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
-        config.preservedFiles[fileRelaitvePath].forEach((prevedExport) => {
+        fileContent += `const ${varName} = require ("${relativePath + fileRelaitvePath}");\n`;
+        if (config.preservedFiles[relativePath + fileMatchRegex] == undefined)
+            throw new Error(`Incorrect path to ${fileRelaitvePath} did you means? \n ${relativePath + fileRelaitvePath}`);
+        config.preservedFiles[relativePath + fileMatchRegex].forEach((prevedExport) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
-        foundPreservedFiles.push(fileRelaitvePath);
+        foundPreservedFiles.push(relativePath + fileRelaitvePath);
     }
     else if (fileMatchRegex.test(file.fileName)) {
         fileContent += `const ${varName} = require ("${relativePath}${fileRelaitvePath}");\n`;
