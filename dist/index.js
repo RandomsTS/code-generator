@@ -27,7 +27,7 @@ const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.t
                     fileRelaitvePath = `.${fileRelaitvePath}`;
                 return fileRelaitvePath === path;
             }).length > 0)) {
-        fileContent += `const ${varName} = require ("${relativePath + fileRelaitvePath}");\n`;
+        fileContent += `const ${varName} = require ("${relativePath + fileRelaitvePath.replace(".", "")}");\n`;
         config.preservedFiles[fileRelaitvePath].forEach((prevedExport) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
