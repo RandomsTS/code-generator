@@ -23,7 +23,7 @@ const relativePath = (0, file_util_1.getRelativePath)(config.outputDir, config.t
         &&
             (Object.keys(config.preservedFiles)
                 .filter((path) => {
-                if (path.startsWith("."))
+                if (path.startsWith(".") && !fileMatchRegex.test(file.fileName))
                     fileRelaitvePath = `.${fileRelaitvePath}`;
                 return fileRelaitvePath === path;
             }).length > 0)) {
