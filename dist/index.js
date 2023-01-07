@@ -19,7 +19,10 @@ console.log(relativePath);
     for (let i = 0; i < idx; i++)
         varName += "_";
     const fileRelaitvePath = file.filePath.replace(config.target, ".").replace(".", "");
-    if (config.preservedFiles && Object.keys(config.preservedFiles).includes(fileRelaitvePath)) {
+    console.log(relativePath + fileRelaitvePath);
+    if (config.preservedFiles
+        &&
+            Object.keys(config.preservedFiles).includes(relativePath + fileRelaitvePath)) {
         fileContent += `const ${varName} = require ("${fileRelaitvePath}");\n`;
         config.preservedFiles[fileRelaitvePath].forEach((prevedExport) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
