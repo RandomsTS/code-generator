@@ -33,6 +33,8 @@ readDirectory (config.target, (file)  =>  {
     
     const fileRelaitvePath = file.filePath.replace (config.target, ".").replace (".", "");
 
+    console.log (relativePath+fileRelaitvePath);
+    
     if (
         config.preservedFiles 
         &&
