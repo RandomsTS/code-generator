@@ -43,7 +43,7 @@ readDirectory (config.target, (file)  =>  {
         }).length > 0)
     ) 
     {
-        fileContent += `const ${varName} = require ("${relativePath+fileRelaitvePath}");\n`;   
+        fileContent += `const ${varName} = require ("${relativePath+fileRelaitvePath.replace (".","")}");\n`;   
         config.preservedFiles[fileRelaitvePath].forEach ((prevedExport: string) => {
             preservedFilesExpots.push(`    ${prevedExport}: ${varName}.${prevedExport}`);
         });
