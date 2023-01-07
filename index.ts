@@ -32,14 +32,17 @@ readDirectory (config.target, (file)  =>  {
     let varName: string = "";
     for (let i = 0; i < idx; i++) varName += "_"; 
     
-    const fileRelaitvePath = file.filePath.replace (config.target, ".").replace (".", "");
+    let fileRelaitvePath = file.filePath.replace (config.target, ".").replace (".", "");
 
     if (
         config.preservedFiles 
         &&
         (Object.keys (config.preservedFiles)
         .filter ((path) =>{
-            if (path.startsWith (".")) return path.replace (".", "") === fileRelaitvePath;
+            if (path.startsWith (".")) {
+                fileRelaitvePath = `.${fileRelaitvePath}`;
+                return path.replace (".", "") === fileRelaitvePath;
+            }
             return fileRelaitvePath === path; 
         }).length > 0)
     ) 
