@@ -34,7 +34,7 @@
     "url": "https://github.com/RandomsDev/code-generator.git"
   },
   "bin": {
-    "randoms-generator": "./dist/index.js"
+    "randoms-generator": "./bin/randoms-generator"
   },
   "scripts": {
     "build": "tsc",
