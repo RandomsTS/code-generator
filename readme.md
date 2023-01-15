@@ -10,13 +10,13 @@ A lightweight CLI to recursively include all file from a directory in a single s
 
 - install package 
 
-```command
+```bash
   ~ npm i @randoms-pkg/code-generator
   # or
   ~ yarn add @randoms-pkg/code-generator 
 ```
 
-```
+```typescript
 import codeGenerator from '@randoms-pkg/code-generator';
 
 codeGenerator.writeToFile ();
@@ -39,7 +39,7 @@ codeGenerator.writeToFile ();
 
 - install package as a dev dependency 
 
-```command
+```bash
   ~ npm i @randoms-pkg/code-generator -D
   # or
   ~ yarn add @randoms-pkg/code-generator -D
