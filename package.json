@@ -1,8 +1,9 @@
 {
-  "name": "@randoms-pkg/code-generator",
+  "name": "@randomsts/code-generator",
   "version": "2.6.8",
   "description": "A lightweight CLI to recursively include all file from a directory in a single source file.",
   "keywords": [
+    "randomsts",
     "randoms",
     "code-generator",
     "cli",

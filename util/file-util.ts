@@ -32,7 +32,7 @@ export default class FileUtil
         const files: string[] = readdirSync(root);
         for (var file of files)	FileUtil.readDirectory(root + "/" + file, callBack);
     }
-
+    
     /**
      *  create directory on given path
      *  @param path `string`
