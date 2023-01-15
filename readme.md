@@ -8,6 +8,35 @@ A lightweight CLI to recursively include all file from a directory in a single s
 
 ## USAGE:-
 
+- install package 
+
+```command
+  ~ npm i @randoms-pkg/code-generator
+  # or
+  ~ yarn add @randoms-pkg/code-generator 
+```
+
+```
+import codeGenerator from '@randoms-pkg/code-generator';
+
+codeGenerator.writeToFile ();
+```
+
+- Add ```randoms.config.json``` file in the root of the project
+
+```json
+{
+  "target":  "./src",
+  "include":  "^(?:[a-zA-Z0-9]+|\\[(?:\\.{3})?[a-zA-Z0-9]+\\])\\.js$",
+  "outputDir": "./dist",
+  "outputFile": "output.js"
+}
+```
+
+
+# `OR`
+
+
 - install package as a dev dependency 
 
 ```command

@@ -42,13 +42,13 @@ export default class CodeGenerator
     public defaultExports:       Array  <string>  = [];
     public preservedFilesExpots: Array  <string>  = [];
     public foundPreservedFiles:  Array  <string> = [];
-    
+
     private fileMatchRegex: RegExp
     private config:RandomsConfig
     private relativePath:string
     private fileContent:string = ''
     
-
+    
     /**
      * reads directory and finds file exports
     */

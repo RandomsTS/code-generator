@@ -1,6 +1,6 @@
 {
   "name": "@randoms-pkg/code-generator",
-  "version": "2.5.6",
+  "version": "2.6.7",
   "description": "A lightweight CLI to recursively include all file from a directory in a single source file.",
   "keywords": [
     "randoms",
@@ -48,3 +48,4 @@
   },
   "homepage": "https://github.com/RandomsDev/code-generator"
 }
+
