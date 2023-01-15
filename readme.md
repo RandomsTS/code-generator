@@ -1,8 +1,8 @@
-## @randoms/code-generator package
+## @randomsts/code-generator package
 
 A lightweight CLI to recursively include all file from a directory in a single source file.
 
-- [Install on npm](https://www.npmjs.com/package/@randoms-pkg/code-generator)
+- [Install on npm](https://www.npmjs.com/package/@randomsts/code-generator)
 - [Github Link](https://github.com/RandomsDev/code-generator)
 
 
@@ -11,13 +11,13 @@ A lightweight CLI to recursively include all file from a directory in a single s
 - install package 
 
 ```bash
-  ~ npm i @randoms-pkg/code-generator
+  ~ npm i @randomsts/code-generator
   # or
-  ~ yarn add @randoms-pkg/code-generator 
+  ~ yarn add @randomsts/code-generator 
 ```
 
 ```typescript
-import codeGenerator from '@randoms-pkg/code-generator';
+import codeGenerator from '@randomsts/code-generator';
 
 codeGenerator.writeToFile ();
 ```
@@ -40,9 +40,9 @@ codeGenerator.writeToFile ();
 - install package as a dev dependency 
 
 ```bash
-  ~ npm i @randoms-pkg/code-generator -D
+  ~ npm i @randomsts/code-generator -D
   # or
-  ~ yarn add @randoms-pkg/code-generator -D
+  ~ yarn add @randomsts/code-generator -D
 ```
 
 - Add ```randoms.config.json``` file in the root of the project
