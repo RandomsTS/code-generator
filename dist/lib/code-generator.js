@@ -25,7 +25,8 @@ class CodeGenerator {
         this.addNotFoundPresevedFile();
     }
     /**
-     * writes content to file
+     * writes content to output file
+     * @returns `void`
     */
     writeToFile() {
         file_util_1.default.writeFile(this.config.outputDir + "/" + this.config.outputFile, `${this.fileContent}\nmodule.exports = {\n  default: [${this.defaultExports.join(",")}],\n    /* preserved exports */\n    ${this.preservedFilesExpots.join(",\n")}\n};`);

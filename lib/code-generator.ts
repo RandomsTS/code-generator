@@ -28,9 +28,10 @@ export default class CodeGenerator
         this.addNotFoundPresevedFile();
     }
     
-
+    
     /**
-     * writes content to file 
+     * writes content to output file 
+     * @returns `void`
     */
     public writeToFile () : void
     {
