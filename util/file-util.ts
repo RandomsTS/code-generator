@@ -13,6 +13,7 @@ export default class FileUtil
     */
     private static isFolder(path: string): Boolean  
     {
+        console.log ("Path: ", path );
         const splitPath = path.split ("/");
         let isDirectory = 
             !splitPath.at (splitPath.length - 1)?.startsWith (".") &&
