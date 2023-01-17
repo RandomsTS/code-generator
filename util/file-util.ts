@@ -13,7 +13,15 @@ export default class FileUtil
     */
     private static isFolder(path: string): Boolean  
     {
-        return lstatSync(path + path.endsWith("/") ? "" : "/").isDirectory();
+        const splitPath = path.split ("/");
+        let isDirectory = 
+            !splitPath.at (splitPath.length - 1)?.startsWith (".") &&
+            !splitPath.at (splitPath.length - 1)?.includes (".");
+        
+        if (isDirectory)
+            return lstatSync(path + path.endsWith("/") ? "" : "/").isDirectory();
+
+        return lstatSync(path).isDirectory();
     }
     
     /**
