@@ -10,6 +10,7 @@ class FileUtil {
      * @returns Boolean
     */
     static isFolder(path) {
+        console.log("Path: ", path);
         const splitPath = path.split("/");
         let isDirectory = !splitPath.at(splitPath.length - 1)?.startsWith(".") &&
             !splitPath.at(splitPath.length - 1)?.includes(".");
