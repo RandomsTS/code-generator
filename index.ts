@@ -1,3 +1,3 @@
-import codeGenerator from "./types/code-generator";
-export default codeGenerator;
+import CodeGenerator from "./lib/code-generator";
+export default CodeGenerator;
 

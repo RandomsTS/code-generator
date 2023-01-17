@@ -17,8 +17,8 @@ A lightweight CLI to recursively include all file from a directory in a single s
 ```
 
 ```typescript
-import codeGenerator from '@randomsts/code-generator';
-
+import CodeGenerator from '@randomsts/code-generator';
+const codeGenerator = new CodeGenerator ();
 codeGenerator.writeToFile ();
 ```
 
