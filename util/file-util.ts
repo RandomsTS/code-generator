@@ -13,7 +13,7 @@ export default class FileUtil
     */
     private static isFolder(path: string): Boolean  
     {
-        return lstatSync(path).isDirectory();
+        return lstatSync(path + path.endsWith("/") ? "" : "/").isDirectory();
     }
     
     /**

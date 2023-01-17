@@ -10,7 +10,7 @@ class FileUtil {
      * @returns Boolean
     */
     static isFolder(path) {
-        return (0, fs_1.lstatSync)(path).isDirectory();
+        return (0, fs_1.lstatSync)(path + path.endsWith("/") ? "" : "/").isDirectory();
     }
     /**
      * Iterate whole directory recursively
