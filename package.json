@@ -1,6 +1,6 @@
 {
   "name": "@randomsts/code-generator",
-  "version": "2.9.6",
+  "version": "2.9.7",
   "description": "A lightweight CLI to recursively include all file from a directory in a single source file.",
   "keywords": [
     "randomsts",
@@ -28,7 +28,7 @@
   "main": "./dist/index.js",
   "types": "./index.d.ts",
   "ts-module": "./index.ts",
-  "author": "zain-ul-din",
+  "author": "Zain-ul-din",
   "license": "MIT",
   "repository": {
     "type": "git",

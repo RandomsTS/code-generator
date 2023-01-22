@@ -5,8 +5,7 @@
         "module": 						      "CommonJS",
         "moduleResolution":				      "node",
         "outDir": 						      "dist",
-        "esModuleInterop": 				      true,
-        "forceConsistentCasingInFileNames":   true,
+        "esModuleInterop": 				      false,
         "strict": 						      true,
         "skipLibCheck": 					  true
     }
