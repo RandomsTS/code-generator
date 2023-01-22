@@ -25,7 +25,7 @@ export default class CodeGenerator
         this.readDir ();
         
         // adds preserved files those not found in directory
-        this.addNotFoundPresevedFile();
+        this.addNotFoundPreservedFile();
     }
     
     
@@ -92,7 +92,7 @@ export default class CodeGenerator
     /**
      * adds undefined at the place of missing preserved files
     */
-    private addNotFoundPresevedFile () :void
+    private addNotFoundPreservedFile () :void
     {
         if (this.config.preservedFiles) {
             Object.keys (this.config.preservedFiles).forEach ((key: string) => {

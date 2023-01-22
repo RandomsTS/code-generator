@@ -19,7 +19,7 @@ class CodeGenerator {
         // reads directory
         this.readDir();
         // adds preserved files those not found in directory
-        this.addNotFoundPresevedFile();
+        this.addNotFoundPreservedFile();
     }
     /**
      * writes content to output file
@@ -69,7 +69,7 @@ class CodeGenerator {
     /**
      * adds undefined at the place of missing preserved files
     */
-    addNotFoundPresevedFile() {
+    addNotFoundPreservedFile() {
         if (this.config.preservedFiles) {
             Object.keys(this.config.preservedFiles).forEach((key) => {
                 if (!this.foundPreservedFiles.includes(key)) {
